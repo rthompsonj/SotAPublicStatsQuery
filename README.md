@@ -8,7 +8,7 @@ We will keep logged events available for ~30 days after their entry; after which
 
 ## <a name="query"></a>Querying the stack
 
-There are two primary methods for retrieving data from our Elastic stack: *Search* & *Scroll*.  *Search* is the quickest but only return a maximum of 10,0000 entries.  *Scroll* however, will return unlimited entries at the expense of (potentially) considerably more time.  For this reason it is helpful to narrow down your search based on the event you are interested in.  The current events we have available [listed here](#available_events).
+There are two primary methods for retrieving data from our Elastic stack: *Search* & *Scroll*.  *Search* is the quickest but only return a maximum of 10,0000 entries.  *Scroll* however, will return unlimited entries at the expense of considerably more time.  For this reason it is helpful to narrow down your search based on the event you are interested in.  The current events we have available [listed here](#available_events).
 
 As you can imagine, `PositionUpdate` occurs far more frequently than the `PlayerKilledByPlayer` event.  It is for this reason that you will likely want to specify which term you are most interested in, or terms you would like to exclude.  But before we get into that let us discuss the included example scripts.
 
@@ -18,7 +18,7 @@ While there are [numerous methods](https://www.elastic.co/guide/en/elasticsearch
 * `download_quick.py`  (for *search*)
 * `download_scroll.py`   (for *scroll*)
 
-Each of them accept a number of command line arguments which can be seen by passing the `-h` flag:
+Each of these scripts accepts a number of command line arguments which can be seen by passing the `-h` flag:
 
 ~~~bash
 $> python download_quick.py -h
@@ -55,7 +55,21 @@ $> python download_quick.py -o allbutposition.json -tf 2 -st "NOT PositionUpdate
 $> python download_scroll.py -o playerkilled.json -tf 30 -st "PlayerKilledByPlayer OR PlayerKilledBySelf"
 ~~~
 
-## <a name="available_events"></a>Available Events
+* Download all loot generated events in the past 12 hours:
+
+~~~bash
+$> python download_scroll.py -o lootGenerated.json -tf 0.5 -st "LootGenerated"
+~~~
+
+* Download all loot generated from *The Rise* in the past 12 hours:
+
+~~~bash
+$> python download_scroll.py -o riseLoot.json -tf 0.5 -st "SceneName:The Rise"
+~~~
+
+## <a name="available_events"></a>Event Reference
+Currently there are a number of different location based events. The different types of location events are:
+
 * `LocationEvent`
     * `PositionUpdate`
     * `AdventureExperienceGained`
@@ -82,3 +96,21 @@ $> python download_scroll.py -o playerkilled.json -tf 30 -st "PlayerKilledByPlay
     * `ItemDestroyed_CrownMerchant`
     * `ItemDestroyed_Merchant`
     * `ItemDestroyed_User`
+
+Most share common attributes, but some may vary.  Below are some of the attributes attached to the different event types.  Note that not all event types have all of the listed attributes; a little data exploration will be required to become more familiar with which event contains which attributes.
+
+* Archetype
+* EconomyGoldDelta
+* ItemId
+* LocationEvent
+* Price
+* PricePerUnit
+* Quantity
+* SceneName
+* timestamp
+* xpos
+* ypos
+* zpos
+* PlayerName
+* Killer
+* Victim
