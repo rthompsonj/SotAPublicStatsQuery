@@ -97,7 +97,7 @@ Currently there are a number of different location based events. The different t
     * `ItemDestroyed_Merchant`
     * `ItemDestroyed_User`
 
-Most share common attributes, but some may vary.  Below are some of the attributes attached to the different event types.  Note that not all event types have all of the listed attributes; a little data exploration will be required to become more familiar with which event contains which attributes.
+Most share common attributes but some may vary.  Below are some of the attributes attached to the different event types.  Note that not all event types have all of the listed attributes; a little data exploration will be required to become more familiar with which event contains which attributes.
 
 * Archetype
 * EconomyGoldDelta
