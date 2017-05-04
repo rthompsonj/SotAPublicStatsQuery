@@ -5,9 +5,8 @@ import json
 
 from config import IP, PORT
 
-def data_dump(args=None):
-    if args is None:
-        args = get_args()
+def data_dump():
+    args = get_args()
     
     es = Elasticsearch([dict(host=IP, port=PORT)])
 
@@ -29,5 +28,4 @@ def data_dump(args=None):
     return results
 
 if __name__ == '__main__':
-    args = get_args()
-    data_dump(args)
+    data_dump()
