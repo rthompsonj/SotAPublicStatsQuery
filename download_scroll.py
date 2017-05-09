@@ -7,6 +7,10 @@ import json
 from config import IP, PORT
 
 def data_dump():
+    print('CURRENTLY DISABLED, USE download_quick.py INSTREAD')
+    import sys
+    sys.exit()
+
     args = get_args()
     
     es = Elasticsearch([dict(host=IP, port=PORT)],
