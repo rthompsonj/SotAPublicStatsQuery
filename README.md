@@ -1,5 +1,5 @@
 # SotA Public Stats Query
-Examples scripts for accessing [Shroud of the Avatar](https://www.shroudoftheavatar.com/) public event logs.
+Examples scripts for accessing and processing [Shroud of the Avatar](https://www.shroudoftheavatar.com/) public event logs.
 
 ## Info
 Events within Shroud of the Avatar are logged to an internal [Elastic stack](https://www.elastic.co/).  We have taken location based events and sanitized them for public consumption.  Within this repository you will find several examples on how to query and process these events.  
