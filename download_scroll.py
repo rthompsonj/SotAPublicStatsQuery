@@ -34,4 +34,5 @@ def data_dump():
     return results
 
 if __name__ == '__main__':
-    data_dump()
+    print('CURRENTLY DISABLED, USE download_quick.py INSTREAD')
+    #data_dump()
