@@ -67,6 +67,12 @@ $> python download_scroll.py -o lootGenerated.json -tf 0.5 -st "LootGenerated"
 $> python download_scroll.py -o riseLoot.json -tf 0.5 -st "SceneName:The Rise"
 ~~~
 
+## Analysis Examples
+Under the `SotAPublicStatsQuery/examples` folder you will find two quick examples on how one might read in and or process the data:
+
+1. `read_data.py` is a simple example that illustrates how one can read a json file into a python dictionary.
+2. `pvp_stats.py` goes a bit more in depth by reading in `PlayerKilledByPlayer` events, aggregating them into individual kill-to-death ratios, and finally outputting an interactive html that can be displayed on a webpage.  *Note that this script requires the [pandas](http://pandas.pydata.org/) and [bokeh](http://bokeh.pydata.org/en/latest/) python packages.*
+
 ## <a name="available_events"></a>Event Reference
 Currently there are a number of different location based events:
 
