@@ -4,7 +4,14 @@ import time
 def construct_request(elastic_connection, search_term, time_frame):
     gte_time = time.mktime( (datetime.today() - timedelta(days=time_frame)).timetuple() ) * 1000
     lte_time = time.mktime( (datetime.today()).timetuple() ) * 1000
-
+    
+    try:
+        gte_time = long(gte_time)
+        lte_time = long(lte_time)
+    except (NameError):
+        gte_time = int(gte_time)
+        lte_time = int(lte_time)        
+    
     REQUEST = {
         #"size": 500,
         "sort": [
@@ -27,8 +34,8 @@ def construct_request(elastic_connection, search_term, time_frame):
                     {
                         "range": {
                             "@timestamp": {
-                                "gte": long(gte_time),
-                                "lte": long(lte_time),
+                                "gte": gte_time,
+                                "lte": lte_time,
                                 "format": "epoch_millis"
                             }
                         }
