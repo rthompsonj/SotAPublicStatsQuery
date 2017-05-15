@@ -76,7 +76,6 @@ Under the `SotAPublicStatsQuery/examples` folder you will find two quick example
 Currently there are a number of different location based events:
 
 * `LocationEvent`
-    * `PositionUpdate`
     * `AdventureExperienceGained`
     * `PlayerDeath`
     * `PlayerKilledByPlayer`
@@ -88,7 +87,6 @@ Currently there are a number of different location based events:
     * `ItemGained_Crafting`
     * `ItemGained_CrownMerchant`
     * `ItemGained_ExplodeItem_Merchant`
-    * `ItemGained_World`
     * `ItemGained_StartingChar`
     * `ItemGained_Merchant`
     * `ItemGained_LootGold`
