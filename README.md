@@ -9,7 +9,7 @@ We will keep logged events available for ~30 days after their entry; after which
 ## <a name="query"></a>Querying the stack
 The primary method for retrieving data from our Elastic stack is: *Search* & *Scroll*.  *Search* is the quickest but only returns a maximum of 10,000 entries.  *Scroll* can return all entries but has been disabled for security purposes.  Due to the query limits it is helpful to narrow down your search based on the event you are interested in.  The current events we have available [listed here](#available_events).
 
-As you can imagine, `PositionUpdate` occurs far more frequently than the `PlayerKilledByPlayer` event.  It is for this reason that you will likely want to specify which event you are most interested in or which events you would like to exclude.  But before we get into that let us discuss the included example scripts.
+As you can imagine, some events occur far more frequently than others.  It is for this reason that you will likely want to specify which event you are most interested in or which events you would like to exclude.  But before we get into that let us discuss the included example scripts.
 
 ### Included scripts
 While there are [numerous methods](https://www.elastic.co/guide/en/elasticsearch/guide/current/_talking_to_elasticsearch.html#_restful_api_with_json_over_http) to communicate with an elastic stack; the example scripts included here are written in *python* with the only dependencies being the [*python elasticsearch client*](https://github.com/elastic/elasticsearch-py).  The primary script for using the [above mentioned methods](#query) *search* are:
@@ -36,16 +36,16 @@ Running either of these scripts should yield a `json` file with the requested ev
 ### Examples
 Each of the following examples will return a maximum of 10,000 entries.
 
-* Download position updates from the last 24hr period and dump them to a file called `positionUpdates.json`:
+* Download AdventureExperienceGained events from the last 24hr period and dump them to a file called `xpgained.json`:
 
 ~~~bash
-$> python download_quick.py -o positionUpdates.json -tf 1 -st "PositionUpdate"
+$> python download_quick.py -o xpgained.json -tf 1 -st "AdventureExperienceGained"
 ~~~    
 
-* Download all events *except* position updates from the last 48hrs:
+* Download all events *except* experience gained from the last 48hrs:
 
 ~~~bash
-$> python download_quick.py -o allButPosition.json -tf 2 -st "NOT PositionUpdate"
+$> python download_quick.py -o allButXP.json -tf 2 -st "NOT AdventureExperienceGained"
 ~~~
 
 * Download player killed by player and player killed by self events:
