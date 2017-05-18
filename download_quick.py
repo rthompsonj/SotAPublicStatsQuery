@@ -10,10 +10,11 @@ def data_dump():
     
     es = Elasticsearch([dict(host=IP, port=PORT)])
 
+    time_frame_start = args.time_frame_start
     time_frame  = args.time_frame
     search_term = args.search_term
 
-    request = construct_request(es, search_term, time_frame)
+    request = construct_request(es, search_term, time_frame_start, time_frame)
 
     result = es.search(
         size = 10000,    # hard limit for es.search()

@@ -30,6 +30,8 @@ optional arguments:
                         Search term (default: "*")
   -tf TIME_FRAME, --time-frame TIME_FRAME
                         Time frame in days (default: "0.04")
+  -tfs TIME_FRAME_START, --time-frame-start TIME_FRAME_START
+                        When to start the time frame (default: "0.0")
 ~~~                            
 Running either of these scripts should yield a `json` file with the requested events in a list.  The `--search-term` parameter takes a [Lucene query](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html).  To better illustrate how this works there are a number of examples in the next section.
 
@@ -63,7 +65,13 @@ $> python download_quick.py -o lootGenerated.json -tf 0.5 -st "LootGenerated"
 * Download loot generated from *The Rise* in the past 12 hours:
 
 ~~~bash
-$> python download_quick.py -o riseLoot.json -tf 0.5 -st "SceneName:The Rise"
+$> python download_quick.py -o riseLoot.json -tf 0.5 -st "LootGenerated AND SceneName:The Rise"
+~~~
+
+* Download loot generated from *The Rise* in a 24hr period two days ago:
+
+~~~bash
+$> python download_quick.py -o riseLoot.json -tf 1 -tfs 2 -st "LootGenerated AND SceneName:The Rise"
 ~~~
 
 ## Analysis Examples

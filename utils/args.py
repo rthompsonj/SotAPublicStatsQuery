@@ -11,6 +11,7 @@ ARGS = [
     Argument('-o', '--output', 'output.json', 'Output file name'),
     Argument('-st', '--search-term', '*', 'Search term'),
     Argument('-tf', '--time-frame', 0.04, 'Time frame in days'),
+    Argument('-tfs', '--time-frame-start', 0., 'When to start the time frame'),
 ]
 
 def get_args():
